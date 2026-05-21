@@ -78,7 +78,6 @@ export const pluginStylus = (options?: PluginStylusOptions): RsbuildPlugin => ({
     const STYLUS_URL = 'stylus-url';
     const STYLUS_INLINE = 'stylus-inline';
     const STYLUS_RAW = 'stylus-raw';
-    const isV1 = api.context.version.startsWith('1.');
 
     api.modifyBundlerChain((chain, { CHAIN_ID, environment }) => {
       const { config } = environment;
@@ -101,18 +100,8 @@ export const pluginStylus = (options?: PluginStylusOptions): RsbuildPlugin => ({
       const cssUrlRuleId = CHAIN_ID.ONE_OF.CSS_URL;
       const hasCssUrlRule = cssUrlRuleId && cssRule.oneOfs.has(cssUrlRuleId);
 
-      if (isV1) {
-        chain.module.rule(STYLUS_RAW).test(test);
-        chain.module.rule(STYLUS_INLINE).test(test);
-      }
-
-      const getRule = (id: string) => {
-        // Compatibility for Rsbuild v1
-        if (isV1) {
-          return chain.module.rule(id);
-        }
-        return (id.startsWith('stylus') ? stylusRule : cssRule).oneOf(id);
-      };
+      const getRule = (id: string) =>
+        (id.startsWith('stylus') ? stylusRule : cssRule).oneOf(id);
 
       // Stylus URL for `?url` imports.
       const stylusUrlRule = hasCssUrlRule && getRule(STYLUS_URL);

@@ -1,6 +1,5 @@
 import { expect, test } from '@playwright/test';
 import { createRsbuild, type Rspack } from '@rsbuild/core';
-import { createRsbuild as createRsbuildV1 } from '@rsbuild/core-v1';
 import { pluginStylus } from '../../src';
 
 type RuleRecord = Record<string, unknown>;
@@ -83,24 +82,6 @@ test.describe('plugin-stylus config', () => {
           getOptions(use).importLoaders === 2,
       ),
     ).toBe(true);
-    expect(
-      flattenRules(rules).some((rule) => rule.type === 'asset/source'),
-    ).toBe(true);
-  });
-
-  test('should add stylus loader for Rsbuild v1', async () => {
-    const rsbuild = await createRsbuildV1({
-      config: {
-        plugins: [pluginStylus()],
-      },
-    });
-
-    const rspackConfigs = await rsbuild.initConfigs();
-    const config = rspackConfigs[0] as Rspack.Configuration;
-    const rules = matchRules(config, 'a.styl');
-
-    expect(rules).toHaveLength(3);
-    expect(getStylusUses(config)).toHaveLength(2);
     expect(
       flattenRules(rules).some((rule) => rule.type === 'asset/source'),
     ).toBe(true);
