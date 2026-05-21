@@ -1,6 +1,9 @@
 import { defineConfig } from '@rsbuild/core';
-import { pluginStylus } from '../src';
+import { pluginStylus } from '../../src';
 
 export default defineConfig({
+  output: {
+    filenameHash: false,
+  },
   plugins: [pluginStylus()],
 });

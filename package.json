@@ -1,13 +1,15 @@
 {
-  "name": "rsbuild-plugin-example",
-  "version": "0.0.0",
-  "repository": "https://github.com/rstackjs/rsbuild-plugin-template",
+  "name": "@rsbuild/plugin-stylus",
+  "version": "1.3.2",
+  "description": "Stylus plugin for Rsbuild",
+  "repository": "https://github.com/rstackjs/rsbuild-plugin-stylus",
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "types": "./dist/index.d.ts",
@@ -24,14 +26,18 @@
     "bump": "pnpx bumpp"
   },
   "simple-git-hooks": {
-    "pre-commit": [
-      "rslint",
-      "prettier -w"
-    ]
+    "pre-commit": "pnpm run lint:write"
+  },
+  "dependencies": {
+    "deepmerge": "^4.3.1",
+    "stylus": "0.64.0",
+    "stylus-loader": "8.1.3"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "@rsbuild/core": "^2.0.6",
+    "@rsbuild/core-v1": "npm:@rsbuild/core@^1.7.5",
+    "@rsbuild/plugin-rem": "^1.0.5",
     "@rslib/core": "^0.21.5",
     "@rslint/core": "^0.5.3",
     "@types/node": "^24.12.4",
@@ -41,7 +47,7 @@
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "@rsbuild/core": "^2.0.0"
+    "@rsbuild/core": "^1.3.0 || ^2.0.0-0"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {

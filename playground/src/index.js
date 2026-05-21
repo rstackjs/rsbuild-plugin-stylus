@@ -1,4 +1,4 @@
-import './index.css';
+import './index.styl';
 
 document.querySelector('#root').innerHTML = `
 <div class="content">

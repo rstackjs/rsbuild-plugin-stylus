@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { build, getFileContent } from '../helper';
 
-test('should compile stylus correctly', async () => {
+test('should allow to configure Stylus plugin for specific environment', async () => {
   const { files } = await build(import.meta.dirname);
   const content = getFileContent(files, '.css');
 
