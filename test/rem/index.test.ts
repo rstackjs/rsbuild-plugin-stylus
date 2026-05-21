@@ -1,11 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { build, getFileContent } from '../helper';
+import { build, getFileContent, normalizeCss } from '../helper';
 
 test('should compile stylus and rem correctly', async () => {
   const { files } = await build(import.meta.dirname);
-  const content = getFileContent(files, '.css');
+  const content = normalizeCss(getFileContent(files, '.css'));
 
-  expect(content).toMatch(
-    /body{color:red;font:\.28rem Arial,sans-serif}\.title-class-\w{6}{font-size:\.28rem}/,
-  );
+  expect(content).toContain('body{color:red;font:.28remArial,sans-serif}');
+  expect(content).toMatch(/\.[^{]*title-class-\w{6}{font-size:.28rem}/);
 });

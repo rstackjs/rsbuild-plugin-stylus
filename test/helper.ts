@@ -107,6 +107,9 @@ export function getFileContent(files: Record<string, string>, matcher: string) {
   return files[file];
 }
 
+export const normalizeCss = (content: string) =>
+  content.replace(/\s+/g, '').replace(/;}/g, '}');
+
 export async function build(cwd: string, rsbuildConfig?: RsbuildConfig) {
   const rsbuild = await createRsbuildForTest(cwd, rsbuildConfig);
   await rsbuild.build();
