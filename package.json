@@ -1,6 +1,6 @@
 {
   "name": "@rsbuild/plugin-stylus",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Stylus plugin for Rsbuild",
   "repository": "https://github.com/rstackjs/rsbuild-plugin-stylus",
   "license": "MIT",
