@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@rstest/playwright';
 import { createRsbuildForTest, proxyConsole } from '../helper';
 
 test('should print Stylus plugin hints as expected', async () => {

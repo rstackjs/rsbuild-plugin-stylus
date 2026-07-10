@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@rstest/playwright';
 import { runDevAndPreview } from '../helper';
 
 test('should allow to import raw Stylus files', async ({ page }) => {

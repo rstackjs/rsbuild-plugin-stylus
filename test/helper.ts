@@ -2,13 +2,13 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import net from 'node:net';
 import { join } from 'node:path';
 import { stripVTControlCharacters as stripAnsi } from 'node:util';
-import type { Page } from '@playwright/test';
 import {
   createRsbuild,
   loadConfig,
   mergeRsbuildConfig,
   type RsbuildConfig,
 } from '@rsbuild/core';
+import type { Page } from 'playwright';
 
 const portMap = new Set<number>();
 

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@rstest/playwright';
 import { normalizeCss, runDevAndPreview } from '../helper';
 
 test('should allow to import inline Stylus files', async ({ page }) => {
