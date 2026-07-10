@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@rstest/playwright';
 import { getFileContent, runDevAndPreview } from '../helper';
 
 type StylusUrlResult = {

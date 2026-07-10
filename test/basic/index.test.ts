@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@rstest/playwright';
 import { build, getFileContent, normalizeCss } from '../helper';
 
 test('should compile stylus correctly', async () => {

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '@rstest/playwright';
 import { createRsbuild, type Rspack } from '@rsbuild/core';
 import { pluginStylus } from '../../src';
 
