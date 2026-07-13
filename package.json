@@ -41,6 +41,7 @@
     "@rsbuild/plugin-rem": "^1.0.5",
     "@rslib/core": "^0.23.2",
     "@rslint/core": "^0.6.1",
+    "@rstackjs/test-utils": "^0.2.0",
     "@rstest/core": "^0.11.1",
     "@rstest/playwright": "^0.11.1",
     "@types/node": "^24.12.4",
