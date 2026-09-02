@@ -2,7 +2,8 @@
 import { define } from 'rstack';
 
 define.lib({
-  lib: [{ syntax: 'es2023', dts: true }],
+  syntax: 'es2023',
+  dts: true,
 });
 
 define.test({
@@ -22,25 +23,4 @@ define.staged({
   '*.{json,md,mdx,css,scss,less,html,yml,yaml}': 'rs fmt',
 });
 
-define.lint(({ globals, js, ts }) => [
-  js.configs.recommended,
-  ts.configs.recommended,
-  {
-    files: ['playground/src/**/*'],
-    languageOptions: {
-      globals: globals.browser,
-    },
-  },
-  {
-    files: ['**/*.test.{ts,tsx}'],
-    languageOptions: {
-      globals: globals.rstest,
-    },
-  },
-  {
-    files: ['test/**/src/**/*.{js,jsx}'],
-    languageOptions: {
-      globals: globals.browser,
-    },
-  },
-]);
+define.lint(({ js, ts }) => [js.configs.recommended, ts.configs.recommended]);
