@@ -141,6 +141,12 @@ export const pluginStylus = (options?: PluginStylusOptions): RsbuildPlugin => ({
 
         for (const id of Object.keys(cssBranchRule.uses.entries())) {
           const loader = cssBranchRule.uses.get(id);
+          const loaderPath = loader.get('loader');
+
+          if (!loaderPath) {
+            continue;
+          }
+
           const options = loader.get('options') ?? {};
           const clonedOptions = deepmerge<Record<string, unknown>>(
             {},
@@ -154,7 +160,7 @@ export const pluginStylus = (options?: PluginStylusOptions): RsbuildPlugin => ({
               typeof importLoaders === 'number' ? importLoaders + 1 : 1;
           }
 
-          rule.use(id).loader(loader.get('loader')).options(clonedOptions);
+          rule.use(id).loader(loaderPath).options(clonedOptions);
         }
 
         rule
